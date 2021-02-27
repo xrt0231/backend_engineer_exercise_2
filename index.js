@@ -8,7 +8,6 @@ const apiHost = 'ats.api.alexa.com';
 const {apikey} = process.env;
 
 global.fetch = require("node-fetch");
-console.log(apikey);
 
 function callATS(apikey, num) {
   var uri = '/api?Action=TopSites&Count=' + num + '&CountryCode=US&ResponseGroup=Country&Output=json';
