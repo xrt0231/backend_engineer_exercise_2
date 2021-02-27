@@ -1,12 +1,14 @@
 #!/usr/bin/env node
-
+require('dotenv').config();
 const rp   = require('request-promise')
 const util = require('util');
 const readline = require('readline');
 
-const apiHost = 'ats.api.alexa.com'
+const apiHost = 'ats.api.alexa.com';
+const {apikey} = process.env;
 
 global.fetch = require("node-fetch");
+console.log(apikey);
 
 function callATS(apikey, num) {
   var uri = '/api?Action=TopSites&Count=' + num + '&CountryCode=US&ResponseGroup=Country&Output=json';
@@ -30,11 +32,11 @@ function callATS(apikey, num) {
   .catch( (e)=> console.log('failed:'+e))
 }
 
-if (process.argv.length != 4) {
+if (process.argv.length != 3) {
   console.log(`Usage: node ${process.argv[1]} APIKEY COUNTRY`);
   process.exit(0);
 }
 
-callATS(process.argv[2], process.argv[3]);
+callATS(apikey, process.argv[2]);
 
 
