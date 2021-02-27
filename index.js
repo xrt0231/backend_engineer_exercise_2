@@ -23,7 +23,7 @@ function callATS(apikey, num) {
 
   rp(opts)
   .then(function (html){ 
-  for(let i=0; i<num; i++){
+    for(let i=0; i<num; i++){
     console.log(`${JSON.stringify(html.body.Ats.Results.Result.Alexa.TopSites.Country.Sites.Site[i].DataUrl, null, 2)}`)
     }
   })
